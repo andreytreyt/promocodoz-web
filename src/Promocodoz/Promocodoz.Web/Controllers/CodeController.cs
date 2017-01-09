@@ -4,6 +4,7 @@ using System.Web.Http;
 using Promocodoz.Domain.Core.Entities;
 using Promocodoz.Domain.Core.TransactionScopeFactory;
 using Promocodoz.Domain.Interfaces;
+using Promocodoz.Infrastructure.Data;
 using Promocodoz.Web.Models;
 
 namespace Promocodoz.Web.Controllers
@@ -12,12 +13,12 @@ namespace Promocodoz.Web.Controllers
     {
         private readonly IRepository _repository;
 
-        public CodeController(IRepository repository)
+        public CodeController()
         {
-            _repository = repository;
+            _repository = new Repository();
         }
 
-        // POST: api/Code
+        // POST: api/code
         public IHttpActionResult Post([FromBody]CodeJsonModel model)
         {
             if (string.IsNullOrWhiteSpace(model?.Sid) || 
