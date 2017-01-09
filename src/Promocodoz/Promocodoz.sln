@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{A96F8463-527B-4224-9F87-2FF32973D47A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{3BFA3F4C-4363-42E8-BBA3-17180C9456BE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{CAA0D1D2-9171-41AA-A841-DF5E173D8ECB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Promocodoz.Web", "Promocodoz.Web\Promocodoz.Web.csproj", "{21C8A8A1-6625-473C-8548-0859FD0FF37C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Promocodoz.Domain.Core", "Promocodoz.Domain.Core\Promocodoz.Domain.Core.csproj", "{E134DC47-C19E-48C8-A532-451367EB553A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Promocodoz.Domain.Interfaces", "Promocodoz.Domain.Interfaces\Promocodoz.Domain.Interfaces.csproj", "{F15FD46A-C2D3-473A-94F1-2A8239955E34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Promocodoz.Infrastructure.Data", "Promocodoz.Infrastructure.Data\Promocodoz.Infrastructure.Data.csproj", "{B3DC8E4A-480C-4242-879C-1B64D27C51D9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Promocodoz.Services.Business", "Promocodoz.Services.Business\Promocodoz.Services.Business.csproj", "{86877839-AC69-4854-BEC6-C3DBA5FD612E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21C8A8A1-6625-473C-8548-0859FD0FF37C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21C8A8A1-6625-473C-8548-0859FD0FF37C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21C8A8A1-6625-473C-8548-0859FD0FF37C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21C8A8A1-6625-473C-8548-0859FD0FF37C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E134DC47-C19E-48C8-A532-451367EB553A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E134DC47-C19E-48C8-A532-451367EB553A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E134DC47-C19E-48C8-A532-451367EB553A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E134DC47-C19E-48C8-A532-451367EB553A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F15FD46A-C2D3-473A-94F1-2A8239955E34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F15FD46A-C2D3-473A-94F1-2A8239955E34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F15FD46A-C2D3-473A-94F1-2A8239955E34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F15FD46A-C2D3-473A-94F1-2A8239955E34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3DC8E4A-480C-4242-879C-1B64D27C51D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3DC8E4A-480C-4242-879C-1B64D27C51D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3DC8E4A-480C-4242-879C-1B64D27C51D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3DC8E4A-480C-4242-879C-1B64D27C51D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86877839-AC69-4854-BEC6-C3DBA5FD612E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86877839-AC69-4854-BEC6-C3DBA5FD612E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86877839-AC69-4854-BEC6-C3DBA5FD612E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86877839-AC69-4854-BEC6-C3DBA5FD612E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E134DC47-C19E-48C8-A532-451367EB553A} = {A96F8463-527B-4224-9F87-2FF32973D47A}
+		{F15FD46A-C2D3-473A-94F1-2A8239955E34} = {A96F8463-527B-4224-9F87-2FF32973D47A}
+		{B3DC8E4A-480C-4242-879C-1B64D27C51D9} = {3BFA3F4C-4363-42E8-BBA3-17180C9456BE}
+		{86877839-AC69-4854-BEC6-C3DBA5FD612E} = {CAA0D1D2-9171-41AA-A841-DF5E173D8ECB}
+	EndGlobalSection
+EndGlobal
