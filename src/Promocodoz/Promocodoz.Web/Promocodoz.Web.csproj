@@ -197,7 +197,6 @@
     </Compile>
     <Compile Include="Models\CodeJsonModel.cs" />
     <Compile Include="ViewModel\AccountViewModels.cs" />
-    <Compile Include="ViewModel\CodeViewModel.cs" />
     <Compile Include="ViewModel\ConsoleViewModel.cs" />
     <Compile Include="ViewModel\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
