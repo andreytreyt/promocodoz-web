@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Transactions;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Promocodoz.Domain.Core.Entities;
-using Promocodoz.Domain.Core.Enums;
 using Promocodoz.Domain.Core.TransactionScopeFactory;
 using Promocodoz.Domain.Interfaces;
 using Promocodoz.Web.ViewModel;
@@ -27,47 +24,32 @@ namespace Promocodoz.Web.Controllers
             var userId = User.Identity.GetUserId();
             var user = _repository.GetById<ApplicationUser>(userId);
 
-            var accountInfoModel = new AccountInfoViewModel
+            var model = new ConsoleViewModel
             {
                 Sid = userId,
                 Secret = user.SecretKey
             };
 
-            var codes = user.Codes
-                .OrderByDescending(x => x.Id)
-                .Select(x => new CodeViewModel
-                {
-                    Key = x.Key,
-                    Value = x.Value,
-                    IsActivated = x.IsActivated,
-                    ActivationDate = x.ActivationDate,
-                    Platform = x.Platform
-                })
-                .ToList();
-
-            var model = new ConsoleViewModel(accountInfoModel)
-            {
-                Codes = codes
-            };
-
-            IEnumerable<Platform> platforms = (IEnumerable<Platform>)Enum.GetValues(typeof(Platform));
-
-            ViewBag.Platforms = platforms;
-
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult GenerateCodes(int count, int value, Platform? platform = null)
+        [ValidateAntiForgeryToken]
+        public ActionResult Index(ConsoleViewModel model)
         {
             var userId = User.Identity.GetUserId();
             var user = _repository.GetById<ApplicationUser>(userId);
 
+            model.Sid = userId;
+            model.Secret = user.SecretKey;
+
+            if (!ModelState.IsValid) return View(model);
+
             using (TransactionScope transactionScope = TransactionScopeFactory.Serializable())
             {
-                for (int i = 0; i < count; i++)
+                for (int i = 0; i < model.CodesCount; i++)
                 {
-                    user.Codes.Add(new Code(value, platform));
+                    user.Codes.Add(new Code(model.Value, model.Platform));
                 }
 
                 _repository.Save();
@@ -75,6 +57,28 @@ namespace Promocodoz.Web.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        public JsonResult Codes()
+        {
+            var userId = User.Identity.GetUserId();
+            var user = _repository.GetById<ApplicationUser>(userId);
+
+            var codes = user.Codes
+                .OrderByDescending(x => x.Id)
+                .Select(x => new
+                {
+                    Code = x.Key,
+                    Value = x.Value,
+                    IsActivated = x.IsActivated ? "Yes" : "No",
+                    ActivationDate = x.ActivationDate?.ToShortDateString(),
+                    Platform = x.Platform?.ToString() ?? "All"
+                })
+                .ToList();
+
+            var json = Json(codes, JsonRequestBehavior.AllowGet);
+
+            return json;
         }
     }
 }

@@ -31,6 +31,9 @@ namespace Promocodoz.Web.Controllers
             if (user == null)
                 return BadRequest();
 
+            if (!user.EmailConfirmed)
+                return BadRequest();
+
             if (user.SecretKey != model.Secret)
                 return BadRequest();
 

@@ -9,7 +9,9 @@
     // EVENTS
 
     $("#btn-loading").click(function () {
-        $(this).button("loading");
+        if (!$(".field-validation-error").is(':visible')) {
+            $(this).button("loading");
+        }
     });
 
     // INIT

@@ -3,12 +3,6 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Promocodoz.Web.ViewModel
 {
-    public class AccountInfoViewModel
-    {
-        public string Sid { get; set; }
-        public string Secret { get; set; }
-    }
-
     public class ExternalLoginConfirmationViewModel
     {
         [Required]

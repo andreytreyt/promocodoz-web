@@ -1,15 +1,28 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using Promocodoz.Domain.Core.Enums;
 
 namespace Promocodoz.Web.ViewModel
 {
     public class ConsoleViewModel
     {
-        public ConsoleViewModel(AccountInfoViewModel accountInfo)
-        {
-            AccountInfo = accountInfo;
-        }
+        public string Sid { get; set; }
+        public string Secret { get; set; }
 
-        public AccountInfoViewModel AccountInfo { get; protected set; }
-        public List<CodeViewModel> Codes { get; set; } = new List<CodeViewModel>();
+        [Required]
+        [Range(1, 100)]
+        [Display(Name = "Count of codes")]
+        public int CodesCount { get; set; } = 1;
+
+        [Required]
+        [Range(1, 100)]
+        [Display(Name = "Value")]
+        public int Value { get; set; } = 1;
+
+        [Display(Name = "Platform")]
+        public Platform? Platform { get; set; } = null;
+
+        public IEnumerable<Platform> Platforms => (IEnumerable<Platform>)Enum.GetValues(typeof(Platform));
     }
 }
