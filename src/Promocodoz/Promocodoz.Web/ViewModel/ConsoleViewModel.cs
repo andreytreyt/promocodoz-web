@@ -16,7 +16,6 @@ namespace Promocodoz.Web.ViewModel
         public int CodesCount { get; set; } = 1;
 
         [Required]
-        [Range(1, 100)]
         [Display(Name = "Value")]
         public int Value { get; set; } = 1;
 
