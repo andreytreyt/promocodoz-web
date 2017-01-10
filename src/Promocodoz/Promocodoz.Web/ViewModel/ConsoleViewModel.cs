@@ -22,6 +22,10 @@ namespace Promocodoz.Web.ViewModel
         [Display(Name = "Platform")]
         public Platform? Platform { get; set; } = null;
 
+        [StringLength(32)]
+        [Display(Name = "Comment")]
+        public string Comment { get; set; }
+
         public IEnumerable<Platform> Platforms => (IEnumerable<Platform>)Enum.GetValues(typeof(Platform));
     }
 }

@@ -51,6 +51,13 @@
                 </div>
             </div>
             <div class="form-group">
+                <label class="col-md-2 control-label">Comment:</label>
+                <div class="col-md-10">
+                    @Html.TextAreaFor(m => m.Comment, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Comment, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
                     <input type="submit" class="btn btn-primary" id="btn-loading" data-loading-text="Generating..." value="Generate" />
                 </div>
@@ -68,6 +75,7 @@
                     <th data-field="Platform" data-sortable="true">Platform</th>
                     <th data-field="IsActivated" data-sortable="true">Is Activated</th>
                     <th data-field="ActivationDate" data-sortable="true">Activation Date</th>
+                    <th data-field="Comment">Comment</th>
                 </tr>
             </thead>
         </table>

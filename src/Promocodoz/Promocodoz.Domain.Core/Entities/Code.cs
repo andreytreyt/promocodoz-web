@@ -9,7 +9,7 @@ namespace Promocodoz.Domain.Core.Entities
         protected Code()
         { }
 
-        public Code(int value, Platform? platform = null)
+        public Code(int value, Platform? platform = null, string comment = null)
         {
             var guid = Guid.NewGuid().ToString().ToUpper().Split('-');
             var key = $"{guid[1]}-{guid[2]}-{guid[3]}";
@@ -18,6 +18,7 @@ namespace Promocodoz.Domain.Core.Entities
             Value = value;
             IsActivated = false;
             Platform = platform;
+            Comment = comment;
         }
 
         [Required]
@@ -26,6 +27,8 @@ namespace Promocodoz.Domain.Core.Entities
         public bool IsActivated { get; protected set; }
         public DateTime? ActivationDate { get; protected set; }
         public Platform? Platform { get; protected set; }
+        [StringLength(32)]
+        public string Comment { get; protected set; }
 
         public virtual ApplicationUser User { get; protected set; }
 
