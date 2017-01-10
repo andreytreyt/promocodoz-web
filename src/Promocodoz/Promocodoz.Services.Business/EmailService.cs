@@ -7,7 +7,7 @@ namespace Promocodoz.Services.Business
 {
     public class EmailService : IIdentityMessageService
     {
-        const string Name = "PromocodoZ";
+        const string Name = "PromocodOz";
         const string UserName = "mail@promocodoz.com";
         const string Password = "Pr0m0C0d0$";
         const string Host = "smtp.masterhost.ru";
