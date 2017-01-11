@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "Docs";
+}
+<h2>How to use</h2>
+<p>There are 2 ways to use promo codes.</p>
+
+<div>
+    <hr />
+    <h4>Send POST request</h4>
+    <dl class="dl-horizontal">
+        <dt>URL:</dt>
+        <dd>http://promocodoz.com/api/code</dd>
+        <dt>Data (JSON):</dt>
+        <dd>{ sid = &lt;Your Account SID&gt;, secret = &lt;Your Secret Key&gt;, code = &lt;Promo Code&gt;, platform = &lt;All | Android | iOS | Windows&gt; }</dd>
+    </dl>
+</div>
+<div>
+    <hr/>
+    <h4>Use SDK</h4>
+    <dl class="dl-horizontal">
+        <dt>Coming soon...</dt>
+        <dd></dd>
+    </dl>
+</div>
+<div class="alert alert-danger">
+    <h4><strong>Important!</strong></h4>
+    <p>Response will contain a number that was set in field 'Value' during create a promo code. You can use it as you wish!</p>
+</div>

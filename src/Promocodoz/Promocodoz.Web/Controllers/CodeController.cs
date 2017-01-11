@@ -37,7 +37,9 @@ namespace Promocodoz.Web.Controllers
             if (user.SecretKey != model.Secret)
                 return BadRequest();
 
-            var code = _repository.GetAll<Code>().FirstOrDefault(x => !x.IsActivated && x.Key == model.Code);
+            var code = _repository.GetAll<Code>()
+                .FirstOrDefault(x => !x.IsActivated && x.Key == model.Code && 
+                                     (x.Platform == null || x.Platform == model.Platform));
 
             if (code == null)
                 return NotFound();
