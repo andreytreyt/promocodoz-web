@@ -2,6 +2,7 @@
 using System.Transactions;
 using System.Web.Http;
 using Promocodoz.Domain.Core.Entities;
+using Promocodoz.Domain.Core.Enums;
 using Promocodoz.Domain.Core.TransactionScopeFactory;
 using Promocodoz.Domain.Interfaces;
 using Promocodoz.Infrastructure.Data;
@@ -38,7 +39,8 @@ namespace Promocodoz.Web.Controllers
                 return BadRequest();
 
             var code = _repository.GetAll<Code>()
-                .FirstOrDefault(x => !x.IsActivated && x.Key == model.Code && x.Platform == model.Platform);
+                .FirstOrDefault(x => !x.IsActivated && x.Key == model.Code && 
+                                     (x.Platform == Platform.All || x.Platform == model.Platform));
 
             if (code == null)
                 return NotFound();
