@@ -72,7 +72,7 @@ namespace Promocodoz.Web.Controllers
                     Value = x.Value,
                     IsActivated = x.IsActivated ? "Yes" : "No",
                     ActivationDate = x.ActivationDate?.ToShortDateString(),
-                    Platform = x.Platform?.ToString() ?? "All",
+                    Platform = x.Platform.ToString(),
                     Comment = x.Comment
                 })
                 .ToList();

@@ -38,8 +38,7 @@ namespace Promocodoz.Web.Controllers
                 return BadRequest();
 
             var code = _repository.GetAll<Code>()
-                .FirstOrDefault(x => !x.IsActivated && x.Key == model.Code && 
-                                     (x.Platform == null || x.Platform == model.Platform));
+                .FirstOrDefault(x => !x.IsActivated && x.Key == model.Code && x.Platform == model.Platform);
 
             if (code == null)
                 return NotFound();

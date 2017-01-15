@@ -20,7 +20,7 @@ namespace Promocodoz.Web.ViewModel
         public int Value { get; set; } = 1;
 
         [Display(Name = "Platform")]
-        public Platform? Platform { get; set; } = null;
+        public Platform Platform { get; set; } = Platform.All;
 
         [StringLength(32)]
         [Display(Name = "Comment")]

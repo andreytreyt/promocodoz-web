@@ -42,7 +42,6 @@
                 <label class="col-md-2 control-label">Platform:</label>
                 <div class="col-md-10">
                     <select class="form-control" name="platform">
-                        <option value="">All</option>
                         @foreach (var platform in Model.Platforms)
                         {
                             <option value="@platform">@platform.ToString()</option>

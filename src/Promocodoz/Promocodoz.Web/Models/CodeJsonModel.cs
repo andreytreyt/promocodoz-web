@@ -12,6 +12,6 @@ namespace Promocodoz.Web.Models
         [JsonProperty("code")]
         public string Code { get; set; }
         [JsonProperty("platform")]
-        public Platform? Platform { get; set; }
+        public Platform Platform { get; set; }
     }
 }
