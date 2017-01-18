@@ -22,28 +22,35 @@ namespace Promocodoz.Web.Controllers
         // POST: api/code
         public IHttpActionResult Post([FromBody]CodeJsonModel model)
         {
-            if (string.IsNullOrWhiteSpace(model?.Sid) || 
-                string.IsNullOrWhiteSpace(model.Secret) || 
-                string.IsNullOrWhiteSpace(model.Code))
-                return BadRequest();
+            if (model == null)
+                return BadRequest("Invalid data.");
+
+            if (string.IsNullOrWhiteSpace(model.Sid))
+                return BadRequest("Sid is required.");
+
+            if (string.IsNullOrWhiteSpace(model.Secret))
+                return BadRequest("Secret is required.");
+
+            if (string.IsNullOrWhiteSpace(model.Code))
+                return BadRequest("Code is required.");
 
             var user = _repository.GetById<ApplicationUser>(model.Sid);
 
             if (user == null)
-                return BadRequest();
+                return BadRequest($"Account with sid {model.Sid} isn't found.");
 
             if (!user.EmailConfirmed)
-                return BadRequest();
+                return BadRequest("Email isn't confirmed");
 
             if (user.SecretKey != model.Secret)
-                return BadRequest();
+                return BadRequest("Secret is an incorrect.");
 
             var code = _repository.GetAll<Code>()
                 .FirstOrDefault(x => !x.IsActivated && x.Key == model.Code && 
                                      (x.Platform == Platform.All || x.Platform == model.Platform));
 
             if (code == null)
-                return NotFound();
+                return BadRequest($"Code {model.Code} for Platform {model.Platform} isn't found.");
 
             using (TransactionScope transactionScope = TransactionScopeFactory.Serializable())
             {
