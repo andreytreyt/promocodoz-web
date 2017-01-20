@@ -19,6 +19,9 @@ namespace Promocodoz.Web.ViewModel
         [Display(Name = "Value")]
         public int Value { get; set; } = 1;
 
+        [Display(Name = "Expired date")]
+        public DateTime? ExpiredDate { get; set; } = null;
+
         [Display(Name = "Platform")]
         public Platform Platform { get; set; } = Platform.All;
 

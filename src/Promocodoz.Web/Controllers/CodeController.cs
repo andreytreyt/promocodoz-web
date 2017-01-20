@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Transactions;
 using System.Web.Http;
 using Promocodoz.Domain.Core.Entities;
@@ -37,10 +38,10 @@ namespace Promocodoz.Web.Controllers
             var user = _repository.GetById<ApplicationUser>(model.Sid);
 
             if (user == null)
-                return BadRequest($"Account with sid {model.Sid} isn't found.");
+                return BadRequest($"Account with sid {model.Sid} is not found.");
 
             if (!user.EmailConfirmed)
-                return BadRequest("Email isn't confirmed");
+                return BadRequest("Email is not confirmed");
 
             if (user.SecretKey != model.Secret)
                 return BadRequest("Secret is an incorrect.");
@@ -50,7 +51,10 @@ namespace Promocodoz.Web.Controllers
                                      (x.Platform == Platform.All || x.Platform == model.Platform));
 
             if (code == null)
-                return BadRequest($"Code {model.Code} for Platform {model.Platform} isn't found.");
+                return BadRequest($"Code {model.Code} for Platform {model.Platform} is not found.");
+
+            if (code.ExpiredDate < DateTime.Now)
+                return BadRequest($"Activation date of code {model.Code} is expired.");
 
             using (TransactionScope transactionScope = TransactionScopeFactory.Serializable())
             {

@@ -71,6 +71,10 @@
     <Compile Include="Migrations\201701151700398_RemoveNullableFromPlatform.Designer.cs">
       <DependentUpon>201701151700398_RemoveNullableFromPlatform.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201701200628121_AddExpiredDate.cs" />
+    <Compile Include="Migrations\201701200628121_AddExpiredDate.Designer.cs">
+      <DependentUpon>201701200628121_AddExpiredDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository.cs" />
@@ -98,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201701151700398_RemoveNullableFromPlatform.resx">
       <DependentUpon>201701151700398_RemoveNullableFromPlatform.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201701200628121_AddExpiredDate.resx">
+      <DependentUpon>201701200628121_AddExpiredDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -49,7 +49,7 @@ namespace Promocodoz.Web.Controllers
             {
                 for (int i = 0; i < model.CodesCount; i++)
                 {
-                    user.Codes.Add(new Code(model.Value, model.Platform, model.Comment));
+                    user.Codes.Add(new Code(model.Value, model.ExpiredDate, model.Platform, model.Comment));
                 }
 
                 _repository.Save();
@@ -72,6 +72,7 @@ namespace Promocodoz.Web.Controllers
                     Value = x.Value,
                     IsActivated = x.IsActivated ? "Yes" : "No",
                     ActivationDate = x.ActivationDate?.ToShortDateString(),
+                    ExpiredDate = x.ExpiredDate?.ToShortDateString(),
                     Platform = x.Platform.ToString(),
                     Comment = x.Comment
                 })
