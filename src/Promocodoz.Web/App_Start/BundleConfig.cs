@@ -21,9 +21,13 @@ namespace Promocodoz.Web
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
+                      "~/Scripts/respond.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bootstrap-table").Include(
                       "~/Scripts/bootstrap-table/bootstrap-table.js",
                       "~/Scripts/bootstrap-table/locale/bootstrap-table-en-US.js",
-                      "~/Scripts/respond.js"));
+                      "~/Scripts/bootstrap-table/extensions/export/bootstrap-table-export.js",
+                      "~/Scripts/tableExport.jquery.plugin/tableExport.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/site").Include(
                       "~/Scripts/site.js"));
