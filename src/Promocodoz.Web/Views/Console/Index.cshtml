@@ -27,15 +27,15 @@
             <div class="form-group">
                 <label class="col-md-2 control-label">Count of codes:</label>
                 <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.CodesCount, new {@class = "form-control", type = "number", min = 1, max = 100, step = 1 })
-                    @Html.ValidationMessageFor(m => m.CodesCount, "", new {@class = "text-danger"})
+                    @Html.TextBoxFor(m => m.CodesCount, new { @class = "form-control", type = "number", min = 1, max = 100, step = 1 })
+                    @Html.ValidationMessageFor(m => m.CodesCount, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
                 <label class="col-md-2 control-label">Value:</label>
                 <div class="col-md-10">
-                    @Html.TextBoxFor(m => m.Value, new {@class = "form-control", type = "number", step = 1})
-                    @Html.ValidationMessageFor(m => m.Value, "", new {@class = "text-danger"})
+                    @Html.TextBoxFor(m => m.Value, new { @class = "form-control", type = "number", step = 1 })
+                    @Html.ValidationMessageFor(m => m.Value, "", new { @class = "text-danger" })
                 </div>
             </div>
             <div class="form-group">
@@ -71,6 +71,7 @@
 
         <table class="table-bootstrap"
                data-search="true"
+               data-show-export="true"
                data-url="@Url.Action("Codes", "Console")"
                data-row-style="codesRowStyle">
             <thead>
@@ -91,8 +92,15 @@
 @section scripts
 {
     @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap-table")
 
     <script>
+        // VARS
+
+        var $table = $(".table-bootstrap");
+
+        // FUNCTIONS
+
         function codesRowStyle(row, index) {
             if (row.ActivationDate != null) {
                 return {
@@ -102,5 +110,26 @@
                 return "";
             }
         }
+
+        // EVENTS
+
+        $("#btn-loading").click(function () {
+            if (!$(".field-validation-error").is(':visible')) {
+                $(this).button("loading");
+            }
+        });
+
+        // INIT
+
+        $table.bootstrapTable();
+
+        $("[data-toggle='tooltip']").tooltip();
+
+        $table.bootstrapTable("togglePagination");
+
+        $table.bootstrapTable('destroy').bootstrapTable({
+            exportDataType: 'all',
+            exportTypes: ['doc', 'excel']
+        });
     </script>
 }
